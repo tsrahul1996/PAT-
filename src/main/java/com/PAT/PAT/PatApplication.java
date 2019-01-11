@@ -10,5 +10,6 @@ public class PatApplication {
 		SpringApplication.run(PatApplication.class, args);
 	}
 
+
 }
 
