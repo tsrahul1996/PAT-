@@ -4,10 +4,13 @@ import com.PAT.PAT.Model.Employee;
 import com.PAT.PAT.dao.EmployeeRepository;
 import com.PAT.PAT.java.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 /**
@@ -22,6 +25,10 @@ public class UserController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @GetMapping("/main")
+    public String mainPage(Model model){
+        return "main";
+    }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String homePage(Model model) {
@@ -47,15 +54,15 @@ public class UserController {
             return "login";
         } else {
 
-            return "welcome";
+            return "main";
         }
     }
+    @Value("${welcome.message:test}")
+    private String message = "Hello World";    @RequestMapping(value = "/welcome")
+    public String Page(Map<String, Object>  model) {
+        model.put("message", this.message);
+        return "main";
 
-    @RequestMapping(value = "/welcome")
-    public String Page(ModelMap model) {
-
-
-        return "welcome";
     }
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
@@ -68,7 +75,7 @@ public class UserController {
         n.setPassword(password);
 
         employeeRepository.save(n);
-        return "welcome";
+        return "main";
 
     }
 
