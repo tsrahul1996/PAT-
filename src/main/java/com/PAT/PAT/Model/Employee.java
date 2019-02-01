@@ -4,46 +4,67 @@ import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Set;
 
 /**
  * Created by expert on 16/1/19.
  */
 @Entity
-@Table(name="employee",uniqueConstraints={@UniqueConstraint(columnNames = {"name"}),@UniqueConstraint(columnNames = {"email"})})
+@Table(name="Employee",uniqueConstraints={@UniqueConstraint(columnNames = {"email"})})
 public class Employee {
 
     @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "name",unique=true ,nullable = false)
-    String name;
+    @Column(name = "firstname")
+    private String firstname;
 
-
-    @Column(name ="email",unique=true ,nullable = false)
-    String email;
+    @Column(name = "lastname")
+    private String lastname;
 
     @Column(name = "password")
-    String password;
+    private String password;
 
+    @Column(name = "active")
+    private int active;
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
+    private Set<Role> roles;
 
-
-    public String getName() {
-        return name;
+    public int getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String emailID) {
-        this.email = emailID;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPassword() {
@@ -54,5 +75,19 @@ public class Employee {
         this.password = password;
     }
 
+    public int getActive() {
+        return active;
+    }
 
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+//    public Set<Role> getRoles() {
+//        return roles;
+//    }
+
+//    public void setRoles(Set<Role> roles) {
+//        this.roles = roles;
+//    }
 }

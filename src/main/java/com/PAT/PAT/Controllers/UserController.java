@@ -1,83 +1,66 @@
 package com.PAT.PAT.Controllers;
 
-import com.PAT.PAT.Model.Employee;
-import com.PAT.PAT.dao.EmployeeRepository;
-import com.PAT.PAT.java.LoginService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
-
-
 /**
- * Created by expert on 16/1/19.
+ * Created by expert on 29/1/19.
  */
-@Controller
-@SessionAttributes("email")
-public class UserController {
-    @Autowired
-    LoginService service;
+//@Controller
+//public class UserController {
+//    @Autowired
+//    private UserService userService;
+//
+//    @RequestMapping(value= {"/", "/login"}, method=RequestMethod.GET)
+//    public ModelAndView login() {
+//        ModelAndView model = new ModelAndView();
+//
+//        model.setViewName("user/login");
+//        return model;
+//    }
+//
+//    @RequestMapping(value= {"/signup"}, method=RequestMethod.GET)
+//    public ModelAndView signup() {
+//        ModelAndView model = new ModelAndView();
+//        User user = new User();
+//        model.addObject("user", user);
+//        model.setViewName("user/signup");
+//
+//        return model;
+//    }
+//
+//    @RequestMapping(value= {"/signup"}, method= RequestMethod.POST)
+//    public ModelAndView createUser(@Valid User user, BindingResult bindingResult) {
+//        ModelAndView model = new ModelAndView();
+//        User userExists = userService.findUserByEmail(user.getEmail());
+//
+//        if(userExists != null) {
+//            bindingResult.rejectValue("email", "error.user", "This email already exists!");
+//        }
+//        if(bindingResult.hasErrors()) {
+//            model.setViewName("user/signup");
+//        } else {
+//            userService.saveUser(user);
+//            model.addObject("msg", "User has been registered successfully!");
+//            model.addObject("user", new User());
+//            model.setViewName("user/signup");
+//        }
+//
+//        return model;
+//    }
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+  /*  @RequestMapping(value= {"/home/home"}, method=RequestMethod.GET)
+    public ModelAndView home() {
+        ModelAndView model = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
 
-    @GetMapping("/main")
-    public String mainPage(Model model){
-        return "main";
+        model.addObject("userName", user.getFirstname() + " " + user.getLastname());
+        model.setViewName("home/home");
+        return model;
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String homePage(Model model) {
-
-        return "home";
-
+    @RequestMapping(value= {"/access_denied"}, method=RequestMethod.GET)
+    public ModelAndView accessDenied() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("errors/access_denied");
+        return model;
     }
-
-    @RequestMapping(value = "/login")
-    public String loginPage(ModelMap model) {
-
-
-        return "login";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String showWelcomePage(ModelMap model, @RequestParam String email, @RequestParam String password) {
-
-        boolean isValidUser = service.validateUser(email, password);
-
-        if (isValidUser == false) {
-
-            return "login";
-        } else {
-
-            return "main";
-        }
-    }
-    @Value("${welcome.message:test}")
-    private String message = "Hello World";    @RequestMapping(value = "/welcome")
-    public String Page(Map<String, Object>  model) {
-        model.put("message", this.message);
-        return "main";
-
-    }
-
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String addNewUser(@RequestParam String name, @RequestParam String email, @RequestParam String password) {
-
-        Employee n = new Employee();
-
-        n.setName(name);
-        n.setEmail(email);
-        n.setPassword(password);
-
-        employeeRepository.save(n);
-        return "main";
-
-    }
-
-
-}
+}*/
