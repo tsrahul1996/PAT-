@@ -37,14 +37,27 @@
 		</div>
 	</nav>
 
-	<div class="container">
+
+<form action="/welcome" method="POST">
+
+	<div class="row">
+		<div class="col-sm-4"></div>
+		<div class="col-sm-4">
+			<h2>Log in to PAT</h2>
 
 
+			<label for="email">Email address</label>
+			<input type="email" name="email" class="form-control" id="email" placeholder="Email">
+
+
+			<label for="password">Password</label>
+			<input type="password" name="password" class="form-control" id="password" placeholder="Password">
+			<h1></h1>
+			<div class="alert alert-warning">
+			<button type="submit" class="btn btn-success">Sign Up</button>
+				<h1 th:text="${message}">Hello,world!</h1>
+		</div>
 	</div>
-	<!-- /.container -->
-
-	<script type="text/javascript"
-		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+</form>
 </body>
 </html>

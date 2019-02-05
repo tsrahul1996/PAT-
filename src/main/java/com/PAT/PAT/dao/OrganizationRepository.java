@@ -9,5 +9,5 @@ import org.springframework.data.repository.CrudRepository;
  * Created by expert on 16/1/19.
  */
 public interface OrganizationRepository extends JpaRepository<Organization, Long> {
-    Organization findByname(String name);
+    Organization findByName(String name);
 }

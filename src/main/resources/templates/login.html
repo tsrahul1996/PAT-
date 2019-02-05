@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>PAT</title>
     <meta charset="utf-8">
@@ -29,25 +29,22 @@
     </div>
 
         <div class="row">
-            <form action="/login" method="POST">
+            <form th:action="@{/login}" th:method="@{POST}">
 
                 <div class="row">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
                         <h2>Log in to PAT</h2>
 
-
                             <label for="email">Email address</label>
                             <input type="email" name="email" class="form-control" id="email" placeholder="Email">
-
-
                             <label for="password">Password</label>
                             <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                             <h1></h1>
-                        <div class="alert alert-warning">
-                            <strong>Warning!</strong>The email or password you have entered is incorrect</div>
                 <button type="submit" class="btn btn-success">Sign Up</button>
-                    </div>
+
+                            <h3 th:text="${message}">Please enter your email id or password</h3></div>
+
                 </div>
             </form>
 

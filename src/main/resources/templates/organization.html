@@ -210,22 +210,25 @@
     </div>
 </nav>
 
+
+
+<!-- Container (Searching organization) -->
 <div class="jumbotron text-center">
     <h1>PAT</h1>
     <p>Assisting your projects</p>
     <p>LOGIN TO AN EXISTING ORGANIZATION</p>
-    <form>
+    <form action="/searchOrganization" method="POST">
         <div class="input-group">
-            <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+            <input type="name" class="form-control" id="name"  name="name" size="50" placeholder="Organization Name" required>
             <div class="input-group-btn">
-                <button type="button" class="btn btn-danger">Log In</button>
+                <button type="button" class="btn btn-danger">Search</button>
             </div>
         </div>
     </form>
 </div>
 
 
-<!-- Container (Contact Section) -->
+<!-- Container (Organization register) -->
 <div id="contact" class="container-fluid bg-grey">
     <h2 class="text-center">CREATE NEW ORGANIZATION</h2>
     <div class="row">
@@ -239,7 +242,7 @@
         <div class="col-sm-7 slideanim">
             <div class="row">
                 <div class="col-sm-6 form-group">
-                    <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+                    <input class="form-control" id="name1" name="name" placeholder="Name" type="text" required>
                 </div>
                 <div class="col-sm-6 form-group">
                     <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
@@ -258,7 +261,7 @@
 
 
 
-
+<!-- Container (review section) -->
     <h2></h2>
     <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
         <!-- Indicators -->
@@ -295,8 +298,6 @@
 
 
 
-<!-- Image of location/map -->
-<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%">
 
 <footer class="container-fluid text-center">
     <a href="#myPage" title="To Top">

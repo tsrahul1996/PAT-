@@ -21,7 +21,7 @@ public class OrganizationServiceImpl implements OrganizationService{
 
     @Override
     public  Organization findOrganizationByName(String name){
-        return organizationRepository.findByname(name);
+        return organizationRepository.findByName(name);
     }
 
 
