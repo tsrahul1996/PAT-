@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Theme Made By www.w3schools.com -->
     <title>Bootstrap Theme Company Page</title>
@@ -218,11 +218,14 @@
     <p>Assisting your projects</p>
     <p>LOGIN TO AN EXISTING ORGANIZATION</p>
     <form action="/searchOrganization" method="POST">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
         <div class="input-group">
             <input type="name" class="form-control" id="name"  name="name" size="50" placeholder="Organization Name" required>
             <div class="input-group-btn">
                 <button type="button" class="btn btn-danger">Search</button>
             </div>
+        </div>
         </div>
     </form>
 </div>
@@ -341,6 +344,8 @@ $(document).ready(function(){
   });
 })
 </script>
+
+<div th:replace="fragments/footer :: footer">&nbsp;</div>
 
 </body>
 </html>

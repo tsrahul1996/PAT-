@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Project Creation</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/registration.css}" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color: #cacaca;">
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+
+
+
+	<div class="panel-group" style="margin-top: 60px">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<form autocomplete="off" action="#" th:action="@{/project}"
+						th:object="${project}" method="post" class="form-horizontal"
+						role="form">
+
+						<h2>Todo Form</h2>
+
+						<div class="form-group">
+							<div class="col-sm-9">
+								<!--<label th:if="${#fields.hasErrors('title')}"
+									th:errors="*{title}" class="validation-message"></label>--> <input
+									type="text" th:field="*{title}" placeholder="Title"
+									class="form-control" />
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<div class="col-sm-9">
+								<!--<label th:if="${#fields.hasErrors('description')}"
+									th:errors="*{description}" class="validation-message"></label>-->
+								<input type="text" th:field="*{description}"
+									placeholder="Description" class="form-control" />
+							</div>
+						</div>
+
+
+						<div class="form-group">
+							<div class="col-sm-9">
+								<button type="submit" class="btn btn-primary btn-block">Create
+									Todo</button>
+							</div>
+						</div>
+
+						<!--<span th:utext="${successMessage}"></span>-->
+
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel-body">
+
+		<div class="panel-group" style="margin-top: 40px">
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<span>Project Stories</span>
+				</div>
+				<div class="panel-body">
+
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>Title</th>
+								<th>Description</th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="project : ${projects}">
+								<td th:text="${project.id}"></td>
+								<td th:text="${project.title}"></td>
+								<td th:text="${project.description}"></td>
+
+								<td><a th:href="${'/project/edit/' + {project.id}}">edit
+								</a></td>
+								<td><a th:href="${'/project/delete/' + {project.id}}">delete
+								</a></td>
+
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace="fragments/footer :: footer">&nbsp;</div>
+
+
+
+</body>
+</html>
